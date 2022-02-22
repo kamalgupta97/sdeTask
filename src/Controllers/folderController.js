@@ -5,10 +5,10 @@ const router = express.Router();
 
 router.get("", async (req, res) => {
   try {
-    const tofind = "Docs";
-    const folder = await Folder.find({ folderName: tofind }).lean().exec();
-    const { path } = folder;
-    res.status(200).json({ folder, path });
+    const { folderName } = req.body;
+    const folder = await Folder.find({ folderName }).lean().exec();
+
+    res.status(200).json({ folder, path: folder[0].path });
   } catch (e) {
     res.status(401).json(e);
   }

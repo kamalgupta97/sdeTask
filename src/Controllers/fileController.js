@@ -1,9 +1,9 @@
 const express = require("express");
-const upload = require("../Middlewares/fileuploads");
+const uploadSingle = require("../Middlewares/fileuploads");
+const FileModel = require("../Models/fileModel");
 const router = express.Router();
-const File = require("../Models/fileModel");
 
-router.post("/", upload.single("file_url"), async function (req, res, next) {
+router.post("/", uploadSingle("file_url"), async (req, res) => {
   try {
     const { fileName, parentId, extension, user } = req.body;
     const file_url = req.file.path;
@@ -15,8 +15,8 @@ router.post("/", upload.single("file_url"), async function (req, res, next) {
       file_url,
     };
     console.log(payload);
-    const file = await File.create(payload);
-    res.status(201).json(file);
+    const newFile = await FileModel.create(payload);
+    res.status(201).json(newFile);
   } catch (e) {
     res.status(401).json(e);
   }
