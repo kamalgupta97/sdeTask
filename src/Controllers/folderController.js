@@ -1,22 +1,33 @@
 const express = require("express");
 const Folder = require("../Models/folderModel");
 const FileModel = require("../Models/fileModel");
+const authenticate = require("../Middlewares/authenticate");
+const authorise = require("../Middlewares/authorise");
 
 const router = express.Router();
 
 // get response for root folder and item and its subfolders
 
-router.get("/root", async (req, res) => {
+router.get("/root", authenticate, async (req, res) => {
+  // console.log(req.user);
   try {
-    const folders = await Folder.find({ parentId: null }).lean().exec();
-    const files = await FileModel.find({ parentId: null }).lean().exec();
+    const folders = await Folder.find({
+      $and: [{ parentId: null }, { user: req.user._id }],
+    })
+      .lean()
+      .exec();
+    const files = await FileModel.find({
+      $and: [{ parentId: null }, { user: req.user._id }],
+    })
+      .lean()
+      .exec();
     res.status(200).json({ folders, files, currentPath: "/" });
   } catch (e) {
     res.status(500).json(e);
   }
 });
 
-router.get("/root/:id", async (req, res) => {
+router.get("/root/:id", authenticate, authorise(Folder), async (req, res) => {
   try {
     const folders = await Folder.find({ parentId: req.params.id }, { __v: 0 })
       .lean()
@@ -31,7 +42,7 @@ router.get("/root/:id", async (req, res) => {
   }
 });
 
-router.post("", async (req, res) => {
+router.post("", authenticate, async (req, res) => {
   try {
     const { folderName, user, path, parentId } = req.body;
 
@@ -55,7 +66,7 @@ router.post("", async (req, res) => {
 
 // Delete a folder
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", authenticate, authorise(Folder), async (req, res) => {
   try {
     const checkisEmpty = await Folder.findById(req.params.id).lean().exec();
     const { ItemsInside } = checkisEmpty;
@@ -85,7 +96,7 @@ router.delete("/:id", async (req, res) => {
 
 // Rename a folder
 
-router.patch("/:id", async (req, res) => {
+router.patch("/:id", authenticate, authorise(Folder), async (req, res) => {
   try {
     const { id } = req.params;
     const update = req.body;
@@ -100,7 +111,7 @@ router.patch("/:id", async (req, res) => {
   }
 });
 
-router.patch("/move/:id", async (req, res) => {
+router.patch("/move/:id", authenticate, authorise(Folder), async (req, res) => {
   try {
     const newParentId = req.body.parentId;
 

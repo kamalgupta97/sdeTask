@@ -1,4 +1,5 @@
 const express = require("express");
+const authenticate = require("../Middlewares/authenticate");
 const uploadSingle = require("../Middlewares/fileuploads");
 const FileModel = require("../Models/fileModel");
 const Folder = require("../Models/folderModel");
@@ -34,7 +35,7 @@ router.post("/", uploadSingle("file_url"), async (req, res) => {
 
 // Delete file
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", authenticate, async (req, res) => {
   try {
     const file = await FileModel.findByIdAndDelete(req.params.id, { __v: 0 })
       .lean()
@@ -61,7 +62,7 @@ router.delete("/:id", async (req, res) => {
 
 // Rename a file
 
-router.patch("/:id", async (req, res) => {
+router.patch("/:id", authenticate, async (req, res) => {
   try {
     const { id } = req.params;
     const update = req.body;
@@ -76,7 +77,7 @@ router.patch("/:id", async (req, res) => {
   }
 });
 
-router.patch("/move/:id", async (req, res) => {
+router.patch("/move/:id", authenticate, async (req, res) => {
   try {
     const newParentId = req.body.parentId;
 
