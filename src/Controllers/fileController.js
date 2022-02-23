@@ -81,26 +81,60 @@ router.patch("/move/:id", async (req, res) => {
     const newParentId = req.body.parentId;
 
     const file = await FileModel.findById(req.params.id).lean().exec();
-    console.log(file);
     const { parentId, _id } = file;
-    const folder = await Folder.findById(parentId).lean().exec();
-    folder.ItemsInside--;
-    folder.childfiles = childfiles = folder.childfiles.filter(
-      (item) => item.toString() !== _id.toString()
-    );
-    const oldParent = await Folder.findByIdAndUpdate(parentId, folder, {
-      new: true,
-    });
-    const newFolder = await Folder.findById(newParentId).lean().exec();
-    newFolder.ItemsInside++;
-    newFolder.childfiles.push(_id);
-    const newParent = await Folder.findByIdAndUpdate(newParentId, newFolder, {
-      new: true,
-    });
-    file.parentId = newParentId;
-    const updated = await FileModel.findByIdAndUpdate(_id, file, { new: true });
+    if (newParentId !== null && parentId !== null) {
+      const folder = await Folder.findById(parentId).lean().exec();
+      folder.ItemsInside--;
+      folder.childfiles = childfiles = folder.childfiles.filter(
+        (item) => item.toString() !== _id.toString()
+      );
+      const oldParent = await Folder.findByIdAndUpdate(parentId, folder, {
+        new: true,
+      });
+      const newFolder = await Folder.findById(newParentId).lean().exec();
+      newFolder.ItemsInside++;
+      newFolder.childfiles.push(_id);
+      const newParent = await Folder.findByIdAndUpdate(newParentId, newFolder, {
+        new: true,
+      });
+      file.parentId = newParentId;
+      const updated = await FileModel.findByIdAndUpdate(_id, file, {
+        new: true,
+      });
 
-    res.status(201).json({ updated, oldParent, newParent });
+      res.status(201).json({ updated, oldParent, newParent });
+    } else if (parentId == null) {
+      const newFolder = await Folder.findById(newParentId).lean().exec();
+      newFolder.ItemsInside++;
+      newFolder.childfiles.push(_id);
+      const newParent = await Folder.findByIdAndUpdate(newParentId, newFolder, {
+        new: true,
+      });
+      file.parentId = newParentId;
+      const updated = await FileModel.findByIdAndUpdate(_id, file, {
+        new: true,
+      });
+
+      res.status(201).json({ updated, newParent, oldParent: null });
+    } else if (newParentId == null) {
+      const oldParent = await Folder.findById(parentId).lean().exec();
+
+      oldParent.ItemsInside--;
+
+      oldParent.childfiles = oldParent.childfiles.filter(
+        (item) => item.toString() !== _id.toString()
+      );
+
+      const newParent = await Folder.findByIdAndUpdate(parentId, oldParent, {
+        new: true,
+      });
+      file.parentId = null;
+      const updated = await FileModel.findByIdAndUpdate(_id, file, {
+        new: true,
+      });
+
+      res.status(201).json({ updated, newParent, oldParent });
+    }
   } catch (e) {
     res.status(500).json(e);
   }
