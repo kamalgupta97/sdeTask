@@ -1,0 +1,44 @@
+//**
+// Register
+  {
+    "name": "kamal",
+    "email": "kamal@gmail.com",
+    "password": "kamal1777"
+  }
+  {
+    "name": "rahul",
+    "email": "rahul@gmail.com",
+    "password": "rahul1777"
+  }
+// Login
+    {
+        "email": "kamal@gmail.com",
+        "password": "kamal1777" 
+    }
+    {
+        "email": "rahul@gmail.com",
+         "password": "rahul1777" 
+    }
+
+
+    // Folder Creation
+
+    {
+        "folderName":"Folder-1",
+     "parentId": null,
+     "path": "/",
+     "user": "62167e75f0c1be9b6abd840c",
+     "childfolders": [],
+     "childfiles":[],
+     "ItemsInside": 0
+   }
+
+ {
+
+    fileName: 
+    parentId: 
+    file_url: 
+    extension: 
+    user: 
+ } 
+ */

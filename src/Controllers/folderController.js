@@ -134,7 +134,7 @@ router.patch("/move/:id", authenticate, authorise(Folder), async (req, res) => {
         new: true,
       });
       folder.parentId = newParentId;
-      folder.path = newParent.path + folder.folderName;
+      folder.path = newParent.path + "/" + folder.folderName;
 
       const updated = await Folder.findByIdAndUpdate(_id, folder, {
         new: true,
@@ -149,7 +149,7 @@ router.patch("/move/:id", authenticate, authorise(Folder), async (req, res) => {
       const newParent = await Folder.findByIdAndUpdate(newParentId, newFolder, {
         new: true,
       });
-      folder.path = newParent.path + newParent.folderName;
+      folder.path = newParent.path + "/" + newParent.folderName;
       const updated = await Folder.findByIdAndUpdate(_id, folder, {
         new: true,
       });

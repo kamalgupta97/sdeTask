@@ -1,0 +1,115 @@
+[{
+  "_id": {
+    "$oid": "6216808eb2a104dd1d2e2fa7"
+  },
+  "folderName": "Folder-1",
+  "parentId": null,
+  "path": "/",
+  "user": "62167e75f0c1be9b6abd840c",
+  "childfolders": [
+    {
+      "$oid": "6216863afce33a7d41e01de9"
+    },
+    {
+      "$oid": "62168640fce33a7d41e01ded"
+    }
+  ],
+  "childfiles": [
+    {
+      "$oid": "6216857dfa3ce8d5f8fdb85c"
+    },
+    {
+      "$oid": "62168587598ba3fd2c7566e8"
+    }
+  ],
+  "ItemsInside": 4,
+  "__v": 4
+},{
+  "_id": {
+    "$oid": "62168095b2a104dd1d2e2fa9"
+  },
+  "folderName": "Folder-2",
+  "parentId": null,
+  "path": "/",
+  "user": "62167e75f0c1be9b6abd840c",
+  "childfolders": [],
+  "childfiles": [],
+  "ItemsInside": 0,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62168099b2a104dd1d2e2fab"
+  },
+  "folderName": "Folder-3",
+  "parentId": null,
+  "path": "/",
+  "user": "62167e75f0c1be9b6abd840c",
+  "childfolders": [],
+  "childfiles": [],
+  "ItemsInside": 0,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621680d1b2a104dd1d2e2fae"
+  },
+  "folderName": "Folder-1",
+  "parentId": null,
+  "path": "/",
+  "user": "62167e5ef0c1be9b6abd8409",
+  "childfolders": [],
+  "childfiles": [],
+  "ItemsInside": 0,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621680d5b2a104dd1d2e2fb0"
+  },
+  "folderName": "Folder-2",
+  "parentId": null,
+  "path": "/",
+  "user": "62167e5ef0c1be9b6abd8409",
+  "childfolders": [],
+  "childfiles": [],
+  "ItemsInside": 0,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621680d9b2a104dd1d2e2fb2"
+  },
+  "folderName": "Folder-3",
+  "parentId": null,
+  "path": "/",
+  "user": "62167e5ef0c1be9b6abd8409",
+  "childfolders": [],
+  "childfiles": [],
+  "ItemsInside": 0,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6216863afce33a7d41e01de9"
+  },
+  "folderName": "Folder-11",
+  "parentId": {
+    "$oid": "6216808eb2a104dd1d2e2fa7"
+  },
+  "path": "Folder-1/",
+  "user": "62167e75f0c1be9b6abd840c",
+  "childfolders": [],
+  "childfiles": [],
+  "ItemsInside": 0,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62168640fce33a7d41e01ded"
+  },
+  "folderName": "Folder-12",
+  "parentId": {
+    "$oid": "6216808eb2a104dd1d2e2fa7"
+  },
+  "path": "Folder-1/",
+  "user": "62167e75f0c1be9b6abd840c",
+  "childfolders": [],
+  "childfiles": [],
+  "ItemsInside": 0,
+  "__v": 0
+}]
