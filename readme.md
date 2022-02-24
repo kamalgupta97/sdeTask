@@ -39,6 +39,183 @@ Start the server
   npm start
 ```
 
+## API Reference
+
+#### BASE URL
+
+```http
+ https://drive-sdetask.herokuapp.com
+```
+
+#### REGISTER
+
+```http
+  POST /register
+```
+
+| Parameter  | Type     | Description  |
+| :--------- | :------- | :----------- |
+| `name`     | `string` | **Required** |
+| `email`    | `string` | **Required** |
+| `password` | `string` | **Required** |
+
+Takes name, email, password and will return created user along with token
+
+#### LOGIN
+
+```http
+  POST /login
+```
+
+| Parameter  | Type     | Description  |
+| :--------- | :------- | :----------- |
+| `email`    | `string` | **Required** |
+| `password` | `string` | **Required** |
+
+Takes email, password and will return existing user along with token
+
+#### ROOT FOLDER
+
+```http
+  GET  /folders/root
+```
+
+| Header         | Type     | Description  |
+| :------------- | :------- | :----------- |
+| `Bearer Token` | `string` | **Required** |
+
+Takes a token in the header and return details of root folder.
+
+#### SPECIFIC FOLDER
+
+```http
+  GET  /folders/root/:id
+```
+
+| Header         | Type     | Description  |
+| :------------- | :------- | :----------- |
+| `Bearer Token` | `string` | **Required** |
+
+| URL PARAMS | Type     | Description  |
+| :--------- | :------- | :----------- |
+| `id`       | `string` | **Required** |
+
+Takes a token and id of the folder return details of that folder.
+
+#### CREATE A FOLDER
+
+```http
+  POST  /folders
+```
+
+| Header         | Type     | Description  |
+| :------------- | :------- | :----------- |
+| `Bearer Token` | `string` | **Required** |
+
+| Parameter      | Type                      | Description     |
+| :------------- | :------------------------ | :-------------- |
+| `folderName`   | `string`                  | **Required**    |
+| `parentId`     | `string`                  | `Default =null` |
+| `path`         | `string`                  | **Required**    |
+| `user`         | `Mongo ObjectID`          | **Required**    |
+| `childfolders` | `Array of Mongo ObjectID` | `Default =[]`   |
+| `childfiles`   | `Array of Mongo ObjectID` | `Default =[]`   |
+| `ItemsInside`  | `Number`                  | `Default =0`    |
+
+Takes a token and above text fields of the folder return newly created folder.
+
+#### DELETE A FOLDER
+
+```http
+  DELETE  /folders/:id
+```
+
+| Header         | Type     | Description  |
+| :------------- | :------- | :----------- |
+| `Bearer Token` | `string` | **Required** |
+
+| URL PARAMS | Type     | Description  |
+| :--------- | :------- | :----------- |
+| `id`       | `string` | **Required** |
+
+Takes a token and id of the folder return details of that deleted folder.
+
+#### RENAME A FOLDER
+
+```http
+  patch  /folders/:id
+```
+
+| Header         | Type     | Description  |
+| :------------- | :------- | :----------- |
+| `Bearer Token` | `string` | **Required** |
+
+| URL PARAMS | Type     | Description  |
+| :--------- | :------- | :----------- |
+| `id`       | `string` | **Required** |
+
+| Parameter    | Type     | Description  |
+| :----------- | :------- | :----------- |
+| `folderName` | `string` | **Required** |
+
+Takes a token and id and updated name of the folder return details of that renamed folder.
+
+#### MOVE A FOLDER
+
+```http
+  patch  /folders/move/:id
+```
+
+| Header         | Type     | Description  |
+| :------------- | :------- | :----------- |
+| `Bearer Token` | `string` | **Required** |
+
+| URL PARAMS | Type     | Description  |
+| :--------- | :------- | :----------- |
+| `id`       | `string` | **Required** |
+
+| Parameter  | Type     | Description  |
+| :--------- | :------- | :----------- |
+| `parentId` | `string` | **Required** |
+
+Takes a token and id and updated parentId of the folder return details of that moved folder.
+
+#### CREATE A FILE
+
+```http
+  POST  /files
+```
+
+| Header         | Type     | Description  |
+| :------------- | :------- | :----------- |
+| `Bearer Token` | `string` | **Required** |
+
+| Parameter   | Type             | Description     |
+| :---------- | :--------------- | :-------------- |
+| `fileName`  | `string`         | **Required**    |
+| `parentId`  | `Mongo ObjectID` | `Default =null` |
+| `file_url`  | `string`         | **Required**    |
+| `extension` | `string`         | **Required**    |
+| `user`      | `Mongo ObjectID` | **Required**    |
+
+Takes a token and above text fields of the file return newly created file.
+
+#### DELETE A FILE
+
+```http
+  DELETE  /files/:id
+```
+
+| Header         | Type     | Description  |
+| :------------- | :------- | :----------- |
+| `Bearer Token` | `string` | **Required** |
+
+| URL PARAMS | Type     | Description  |
+| :--------- | :------- | :----------- |
+| `id`       | `string` | **Required** |
+
+Takes a token and id of the file return details of that deleted file.
+
 # Important Technical Decisions
 
 | ITD 1                                     | MongoDB(Atlas) will be used to store data                                                                                                       |
