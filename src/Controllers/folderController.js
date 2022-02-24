@@ -36,7 +36,11 @@ router.get("/root/:id", authenticate, authorise(Folder), async (req, res) => {
       .lean()
       .exec();
 
-    res.status(200).json({ folders, files, currentPath: folders[0].path });
+    res.status(200).json({
+      folders: folders,
+      files: files,
+      currentPath: folders[0]?.path,
+    });
   } catch (e) {
     res.status(500).json(e);
   }
