@@ -1,3 +1,7 @@
+## 🔗 DEMO
+
+[DEMO VIDEO](https://drive.google.com/file/d/18T4PDqTH0J0kuTE4l-01UCF9Fb9-0ox0/view?usp=sharing)
+
 ## Run Locally
 
 Clone the project
