@@ -25,3 +25,5 @@
     "$date": "2022-02-23T18:35:33.646Z"
   }
 }]
+
+mongodb+srv://kamal:${process.env.ATLAS_DB_SECRET_KEY}@awscluster.ummcp.mongodb.net/sdetask?retryWrites=true&w=majority
