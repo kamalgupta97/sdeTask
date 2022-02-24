@@ -39,7 +39,7 @@ Start the server
   npm start
 ```
 
-## API Reference
+## API ENDPOINTS INFORMATION
 
 #### BASE URL
 
@@ -215,6 +215,44 @@ Takes a token and above text fields of the file return newly created file.
 | `id`       | `string` | **Required** |
 
 Takes a token and id of the file return details of that deleted file.
+
+#### RENAME A FILE
+
+```http
+  patch  /files/:id
+```
+
+| Header         | Type     | Description  |
+| :------------- | :------- | :----------- |
+| `Bearer Token` | `string` | **Required** |
+
+| URL PARAMS | Type     | Description  |
+| :--------- | :------- | :----------- |
+| `id`       | `string` | **Required** |
+
+| Parameter  | Type     | Description  |
+| :--------- | :------- | :----------- |
+| `fileName` | `string` | **Required** |
+
+Takes a token and id and updated name of the file return details of that renamed file.
+
+```http
+  patch  /files/move/:id
+```
+
+| Header         | Type     | Description  |
+| :------------- | :------- | :----------- |
+| `Bearer Token` | `string` | **Required** |
+
+| URL PARAMS | Type     | Description  |
+| :--------- | :------- | :----------- |
+| `id`       | `string` | **Required** |
+
+| Parameter  | Type     | Description  |
+| :--------- | :------- | :----------- |
+| `parentId` | `string` | **Required** |
+
+Takes a token and id and updated parentId of the file return details of that moved file.
 
 # Important Technical Decisions
 
