@@ -1,8 +1,8 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
 
 module.exports = () => {
   return mongoose.connect(
-    "mongodb+srv://kamal:kamal@awscluster.ummcp.mongodb.net/sdetask?retryWrites=true&w=majority"
+    `mongodb+srv://kamal:${process.env.ATLAS_DB_SECRET_KEY}@awscluster.ummcp.mongodb.net/sdetask?retryWrites=true&w=majority`
   );
-  // return mongoose.connect("mongodb://localhost:27017/sdetask");
 };
