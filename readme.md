@@ -1,3 +1,44 @@
+# My Drive App
+
+This is a nodejs backend application to manage your folder on the cloud.
+It has many features including user can
+
+- create/delete/rename/move a folder
+- create/delete/rename/move a file
+  took insparations from google drive.
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/kamalgupta97/sdeTask.git
+```
+
+Go to the project directory
+
+```bash
+  cd sdetask
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Add a .env file
+
+```bash
+  JWT_SECRET_KEY=EXAMPLE
+```
+
+Start the server
+
+```bash
+  npm start
+```
+
 # Important Technical Decisions
 
 | ITD 1                                     | MongoDB(Atlas) will be used to store data                                                                                                       |
