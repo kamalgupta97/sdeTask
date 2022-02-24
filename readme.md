@@ -107,7 +107,7 @@ Takes a token and id of the folder return details of that folder.
 | Parameter      | Type                      | Description     |
 | :------------- | :------------------------ | :-------------- |
 | `folderName`   | `string`                  | **Required**    |
-| `parentId`     | `string`                  | `Default =null` |
+| `parentId`     | `ObjectID`                | `Default =null` |
 | `path`         | `string`                  | **Required**    |
 | `user`         | `Mongo ObjectID`          | **Required**    |
 | `childfolders` | `Array of Mongo ObjectID` | `Default =[]`   |
@@ -166,9 +166,9 @@ Takes a token and id and updated name of the folder return details of that renam
 | :--------- | :------- | :----------- |
 | `id`       | `string` | **Required** |
 
-| Parameter  | Type     | Description  |
-| :--------- | :------- | :----------- |
-| `parentId` | `string` | **Required** |
+| Parameter  | Type       | Description  |
+| :--------- | :--------- | :----------- |
+| `parentId` | `ObjectID` | **Required** |
 
 Takes a token and id and updated parentId of the folder return details of that moved folder.
 
@@ -240,9 +240,9 @@ Takes a token and id and updated name of the file return details of that renamed
 | :--------- | :------- | :----------- |
 | `id`       | `string` | **Required** |
 
-| Parameter  | Type     | Description  |
-| :--------- | :------- | :----------- |
-| `parentId` | `string` | **Required** |
+| Parameter  | Type       | Description  |
+| :--------- | :--------- | :----------- |
+| `parentId` | `ObjectID` | **Required** |
 
 Takes a token and id and updated parentId of the file return details of that moved file.
 
