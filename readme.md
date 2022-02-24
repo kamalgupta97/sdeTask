@@ -1,12 +1,3 @@
-# My Drive App
-
-This is a nodejs backend application to manage your folder on the cloud.
-It has many features including user can
-
-- create/delete/rename/move a folder
-- create/delete/rename/move a file
-  took insparations from google drive.
-
 ## Run Locally
 
 Clone the project
@@ -31,6 +22,7 @@ Add a .env file
 
 ```bash
   JWT_SECRET_KEY=EXAMPLE
+  ATLAS_DB_SECRET_KEY ="YOUR MONGODB ATLAS DATABASE URL OR LOCAL MONGO URL"
 ```
 
 Start the server
